@@ -16,7 +16,7 @@ describe( 'Intern', () => {
                 expect( testIntern.name ).toEqual( name );
                 expect( testIntern.id ).toEqual( id );
                 expect( testIntern.email ).toEqual( email );
-                expect( testIntern.school.toEqual( school ) );
+                expect( testIntern.school ).toEqual( school );
             } );
     
             it( 'should throw an error if school is not a string', () => {

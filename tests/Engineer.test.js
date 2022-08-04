@@ -14,7 +14,7 @@ describe( 'Engineer', () => {
             expect( testEngineer.name ).toEqual( name );
             expect( testEngineer.id ).toEqual( id );
             expect( testEngineer.email ).toEqual( email );
-            expect( testEngineer.gitHub.toEqual( gitHub ) );
+            expect( testEngineer.gitHub).toEqual( gitHub );
         } );
 
         it( 'should throw an error if gitHub is not a string', () => {

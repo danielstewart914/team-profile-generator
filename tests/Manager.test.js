@@ -14,7 +14,7 @@ describe( 'Manager', () => {
             expect( testManager.name ).toEqual( name );
             expect( testManager.id ).toEqual( id );
             expect( testManager.email ).toEqual( email );
-            expect( testManager.officeNumber.toEqual( officeNumber ) );
+            expect( testManager.officeNumber ).toEqual( officeNumber );
         } );
     } );
 
