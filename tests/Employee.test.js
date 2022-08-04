@@ -16,25 +16,25 @@ describe( 'Employee', () => {
         } );
 
         it( 'should throw an error if no arguments are provided', () => {
-            const callBack = () => new Employee();
+            const errorTest = () => new Employee();
 
-            expect( callBack ).toThrow();
+            expect( errorTest ).toThrow();
         } );
 
         it( 'should throw an error if name is not a string', () => {
-            const callBack = () => new Employee( 24, 129, 'me@mail.com' );
+            const errorTest = () => new Employee( 24, 129, 'me@mail.com' );
 
             const error = new Error( 'Expected parameter \'name\' to be a non-empty string' );
 
-            expect( callBack ).toThrow( error );
+            expect( errorTest ).toThrow( error );
         } );
 
         it( 'should throw an error if email is not a string', () => {
-            const callBack = () => new Employee( 'Daniel', 129 );
+            const errorTest = () => new Employee( 'Daniel', 129 );
 
             const error = new Error( 'Expected parameter \'email\' to be a non-empty string' );
 
-            expect( callBack ).toThrow( error );
+            expect( errorTest ).toThrow( error );
         } );
             
     } );
