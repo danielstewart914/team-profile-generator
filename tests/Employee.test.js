@@ -30,7 +30,7 @@ describe( 'Employee', () => {
         } );
 
         it( 'should throw an error if email is not a string', () => {
-            const callBack = () => new Employee( 24, 129 );
+            const callBack = () => new Employee( 'Daniel', 129 );
 
             const error = new Error( 'Expected parameter \'email\' to be a non-empty string' );
 
