@@ -31,7 +31,7 @@ describe( 'Engineer', () => {
 
     describe( 'getRole', () => {
         it( 'should return \'Engineer\'', () => {
-            const testEngineer = new Engineer( 'Anthony', 129, 'tony@email.com', 345 );
+            const testEngineer = new Engineer( 'Anthony', 129, 'tony@email.com', 'tony123' );
 
             expect( testEngineer.getRole() ).toEqual( 'Engineer' );
         } );
