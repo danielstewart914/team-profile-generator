@@ -4,20 +4,21 @@ const Engineer = require( './lib/Engineer' );
 const Intern = require( './lib/Intern' );
 const generateHTML = require( './src/generateHTML' );
 
-const { managerQuestions, engineerQuestions, internQuestions } = require( './src/questions' );
+const generateQuestionsFor = require( './src/questions' );
 
 // array to hold employee list
 const employeeList = [];
 
 const saveHTML = ( HTMLString ) => {
     // TODO: write save code
-    console.log( 'saveHTML() was called' )
+    console.log( 'saveHTML() was called' );
+    console.log( HTMLString );
 }
 
 const queryUserForManagerInfo = async () => {
     try {
 
-        const answers = await inquirer.prompt( managerQuestions );
+        const answers = await inquirer.prompt( generateQuestionsFor( 'Manager' ) );
         const { name, id, email, officeNumber } = answers;
         employeeList.push( new Manager( name, id, email, officeNumber ) );
 
@@ -61,7 +62,7 @@ const queryUserForTeamMemberType = async () => {
 const queryUserForEngineerInfo = async () => {
     try {
 
-        const answers = await inquirer.prompt( engineerQuestions );
+        const answers = await inquirer.prompt( generateQuestionsFor( 'Engineer' ) );
         const { name, id, email, gitHub } = answers;
         employeeList.push( new Engineer( name, id, email, gitHub ) );
 
