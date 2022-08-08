@@ -2,7 +2,7 @@ const managerQuestions = [
     {
         type: 'input',
         name: 'name',
-        message: 'What is the team managers name?',
+        message: 'What is the team manager\'s name?',
         validate: input => {
 
             if ( !input ) return 'Cannot be blank!';
@@ -13,7 +13,7 @@ const managerQuestions = [
     {
         type: 'input',
         name: 'id',
-        message: 'What is the team managers id?',
+        message: 'What is the team manager\'s id?',
         validate: input => {
 
             if ( !input ) return 'Cannot be blank!';
@@ -24,7 +24,7 @@ const managerQuestions = [
     {
         type: 'input',
         name: 'email',
-        message: 'What is the team managers email?',
+        message: 'What is the team manager\'s email?',
         validate: input => {
     
             const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,7 +37,7 @@ const managerQuestions = [
     {
         type: 'input',
         name: 'officeNumber',
-        message: 'What is the team managers office number?',
+        message: 'What is the team manager\'s office number?',
         validate: input => {
 
             if ( !input ) return 'Cannot be blank!';
@@ -48,9 +48,56 @@ const managerQuestions = [
         }
     }
 ];
-const engineerQuestions = [
 
+const engineerQuestions = [
+    {
+        type: 'input',
+        name: 'name',
+        message: 'What is the engineer\'s name?',
+        validate: input => {
+
+            if ( !input ) return 'Cannot be blank!';
+
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'id',
+        message: 'What is the engineer\'s id?',
+        validate: input => {
+
+            if ( !input ) return 'Cannot be blank!';
+
+            return true;
+        }
+    },
+    {
+        type: 'input',
+        name: 'email',
+        message: 'What is the engineer\'s email?',
+        validate: input => {
+    
+            const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if ( !emailRegEx.test( input ) ) return "You must enter a valid email!";
+      
+            return true;
+      
+        }
+    },
+    {
+        type: 'input',
+        name: 'gitHub',
+        message: 'What is the engineer\'s GitHub user name?',
+        validate: input => {
+
+            if ( !input ) return 'Cannot be blank!';
+
+            return true;
+        }
+    }
 ];
+
 const internQuestions = [
 
 ];
