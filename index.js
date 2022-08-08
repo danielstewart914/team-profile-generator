@@ -1,14 +1,20 @@
+// modules
+const fs = require( 'fs' );
 const inquirer = require( 'inquirer' );
+
+// classes
 const Manager = require( './lib/Manager' );
 const Engineer = require( './lib/Engineer' );
 const Intern = require( './lib/Intern' );
-const generateHTML = require( './src/generateHTML' );
 
+// my modules
+const generateHTML = require( './src/generateHTML' );
 const generateQuestionsFor = require( './src/questions' );
 
 // array to hold employee list
 const employeeList = [];
 
+// saves html string to file
 const saveHTML = ( HTMLString ) => {
     // TODO: write save code
     console.log( 'saveHTML() was called' );
@@ -97,9 +103,6 @@ const queryUserForInternInfo = async () => {
     catch ( error ) {
         console.error( error );
     }
-
-    // return to main query function
-    queryUserForTeamMemberType();
 }
 
 // call query for manager info at start of application
