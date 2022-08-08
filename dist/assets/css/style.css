@@ -1,0 +1,19 @@
+.card {
+    height: 24rem;
+}
+
+.card-body {
+    background-color: #efefef;
+}
+
+.role {
+    font-size: 1.5rem;
+}
+
+.invert {
+    filter: invert(100%);
+}
+
+.icon {
+    height: 1em;
+}
