@@ -15,29 +15,15 @@ const saveHTML = ( HTMLString ) => {
     console.log( HTMLString );
 }
 
-const queryUserForManagerInfo = async () => {
-    try {
-
-        const answers = await inquirer.prompt( generateQuestionsFor( 'Manager' ) );
-        const { name, id, email, officeNumber } = answers;
-        employeeList.push( new Manager( name, id, email, officeNumber ) );
-
-        queryUserForTeamMemberType();
-    }
-
-    catch ( error ) {
-        console.error( error );
-    }
-}
-
+// main query function
 const queryUserForTeamMemberType = async () => {
     try {
 
         const answer = await inquirer.prompt( {
             type: 'list',
             name: 'selection',
-            message: 'What type of employee would you like to add?',
-            choices: [ 'Engineer', 'Intern', 'Done adding employees'],
+            message: 'What type of team member would you like to add?',
+            choices: [ 'Engineer', 'Intern', 'I\'m done adding team members'],
             default: 0
         } );
 
@@ -48,7 +34,7 @@ const queryUserForTeamMemberType = async () => {
             break;
             case 'Intern': queryUserForInternInfo();
             break;
-            case 'Done adding employees': saveHTML( generateHTML( employeeList ) );
+            case 'I\'m done adding team members': saveHTML( generateHTML( employeeList ) );
             break;
             default: console.error( 'Error with selection' );
         }
@@ -59,13 +45,16 @@ const queryUserForTeamMemberType = async () => {
     }
 }
 
-const queryUserForEngineerInfo = async () => {
+// query user for manager info
+const queryUserForManagerInfo = async () => {
     try {
 
-        const answers = await inquirer.prompt( generateQuestionsFor( 'Engineer' ) );
-        const { name, id, email, gitHub } = answers;
-        employeeList.push( new Engineer( name, id, email, gitHub ) );
+        const answers = await inquirer.prompt( generateQuestionsFor( 'Manager' ) );
+        const { name, id, email, officeNumber } = answers;
+        // create new manager and push to employee array
+        employeeList.push( new Manager( name, id, email, officeNumber ) );
 
+        // continue on to main query function
         queryUserForTeamMemberType();
     }
 
@@ -74,10 +63,44 @@ const queryUserForEngineerInfo = async () => {
     }
 }
 
+// query user for engineer info
+const queryUserForEngineerInfo = async () => {
+    try {
+
+        const answers = await inquirer.prompt( generateQuestionsFor( 'Engineer' ) );
+        const { name, id, email, gitHub } = answers;
+        // create new engineer and push to employee array
+        employeeList.push( new Engineer( name, id, email, gitHub ) );
+
+        // return to main query function
+        queryUserForTeamMemberType();
+    }
+
+    catch ( error ) {
+        console.error( error );
+    }
+}
+
+// query user for intern info
 const queryUserForInternInfo = async () => {
-    // TODO: write inquirer code for intern info
-    console.log( 'queryUserForInternInfo() was called' );
+    try {
+
+        const answers = await inquirer.prompt( generateQuestionsFor( 'Intern' ) );
+        const { name, id, email, school } = answers;
+        // create new intern and push to employee array
+        employeeList.push( new Intern( name, id, email, school ) );
+
+        // return to main query function
+        queryUserForTeamMemberType();
+    }
+
+    catch ( error ) {
+        console.error( error );
+    }
+
+    // return to main query function
     queryUserForTeamMemberType();
 }
 
+// call query for manager info at start of application
 queryUserForManagerInfo();

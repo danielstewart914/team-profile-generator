@@ -1,8 +1,10 @@
+// returns an array of inquirer questions based on role provided
 const generateQuestionsFor = ( role ) => {
 
     let title;
     let finalQuestion;
     
+    // set title and final question base on role provided
     switch( role ) {
         case 'Manager': 
             title = 'team manager\'s';
@@ -49,6 +51,7 @@ const generateQuestionsFor = ( role ) => {
             }
     }
 
+    // base questions ask for all employee types
     const baseQuestions = [
         {
             type: 'input',
@@ -87,6 +90,7 @@ const generateQuestionsFor = ( role ) => {
         }
     ];
 
+    // add final question to array
     baseQuestions.push( finalQuestion );
 
     return baseQuestions;
