@@ -1,6 +1,3 @@
-const Manager = require( '../lib/Manager' );
-const Engineer = require( '../lib/Engineer' );
-const Intern = require( '../lib/Intern' );
 const generateEmployeeCard = require( './generateEmployeeCard' );
 
 // generate string of HTML cards from array of Employees
@@ -41,14 +38,5 @@ const generateHTML = ( employees ) => {
 </html>`;
 
 }
-
-const employees = [
-    new Manager( 'Daniel', 1, 'danielstewart914@outlook.com', 1 ),
-    new Engineer( 'Daniel', 2, 'danielstewart914@outlook.com', 'danielstewart914' ),
-    new Engineer( 'Bob', 3, 'bobby@dev.com', 'bob123' ),
-    new Intern( 'Anthony', 4, 'tony@email.com', 'University of Washington' ) 
-]
-
-console.log( generateHTML( employees ) );
 
 module.exports = generateHTML;
