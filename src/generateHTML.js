@@ -13,7 +13,7 @@ const generateEmployeeList = ( employees ) => {
 }
 
 // generate full HTML page for displaying team info
-const generateHTML = ( employees ) => {
+const generateHTML = ( employees, teamName ) => {
 
     return `
 <!DOCTYPE html>
@@ -24,11 +24,11 @@ const generateHTML = ( employees ) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
-    <title>My Team</title>
+    <title>${ teamName }</title>
 </head>
 <body>
     <header class="bg-danger text-light p-4 text-center">
-        <h1>My Team</h1>
+        <h1>${ teamName }</h1>
     </header>
     <main class="container pt-5">
         <div class="row justify-content-center p-4">${ generateEmployeeList( employees ) }

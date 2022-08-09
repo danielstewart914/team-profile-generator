@@ -13,12 +13,33 @@ const generateQuestionsFor = require( './src/questions' );
 
 // array to hold employee list
 const employeeList = [];
+let teamName;
 
 // saves html string to file
 const saveHTML = ( HTMLString ) => {
-    // TODO: write save code
-    console.log( 'saveHTML() was called' );
-    console.log( HTMLString );
+    fs.writeFile( `dist/index.html`, HTMLString, error => error ? console.error( error ) : console.log( 'HTML file created successfully' )  );
+}
+
+const queryUserForTeamName = async () => {
+    try {
+        const answer = await inquirer.prompt( 
+            {
+                type: 'input',
+                name: 'teamName',
+                message: 'What name would you like to give this team?',
+                default: 'My Team'
+            } );
+            
+        // store user supplied team name
+        teamName = answer.teamName;
+    
+        // continue on to query for manager info function
+        queryUserForManagerInfo();
+    }
+
+    catch ( error ) {
+        console.error( error );
+    }
 }
 
 // main query function
@@ -40,7 +61,7 @@ const queryUserForTeamMemberType = async () => {
             break;
             case 'Intern': queryUserForInternInfo();
             break;
-            case 'I\'m done adding team members': saveHTML( generateHTML( employeeList ) );
+            case 'I\'m done adding team members': saveHTML( generateHTML( employeeList, teamName ) );
             break;
             default: console.error( 'Error with selection' );
         }
@@ -105,5 +126,5 @@ const queryUserForInternInfo = async () => {
     }
 }
 
-// call query for manager info at start of application
-queryUserForManagerInfo();
+// query for team name at start of application
+queryUserForTeamName();
